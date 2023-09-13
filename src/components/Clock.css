@@ -1,0 +1,91 @@
+.clock {
+    margin: auto;
+    position: relative;
+    width: var(--clock-size);
+    height: var(--clock-size);
+    border-radius: 50%;
+    border: 5px dashed var(--primary);
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-shade);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.clock::after {
+    content: '';
+    position: absolute;
+    width: 96%;
+    height: 96%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--secondary);
+    border-radius: 50%;
+}
+
+.long-indent::after {
+    content: attr(text-content);
+    color: var(--secondary);
+    position: absolute;
+    top: 25px;
+    left: -5px;
+    transform: rotate(calc(0deg - var(--rotation)));
+}
+
+.long-indent {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    height: 20px;
+    width: 5px;
+    background-color: var(--secondary);
+    transform: rotate(var(--rotation)) translateY(calc(-45 * var(--clock-size) / 100));
+}
+
+.indents {
+    position: relative;
+    top: 50%;
+    transform: translateY(-10px);
+}
+
+.second-hand {
+    animation: rotate 42s linear infinite;
+    background-color: var(--primary);
+    width: 1px;
+    height: 230px;
+    position: absolute;
+    top: calc(50% + 115px * sin(var(--angle)) - 115px);
+    left: calc(50% + 115px * cos(var(--angle)));
+    transform: rotate(calc(var(--angle) + 90deg));
+}
+
+.minute-hand {
+    animation: rotate 42s linear infinite;
+    background-color: var(--primary);
+    width: 3px;
+    height: 210px;
+    position: absolute;
+    top: calc(50% + 105px * sin(var(--angle)) - 105px);
+    left: calc(50% + 105px * cos(var(--angle)));
+    transform: rotate(calc(var(--angle) + 90deg));
+}
+
+.hour-hand {
+    animation: rotate 42s linear infinite;
+    background-color: var(--primary);
+    width: 5px;
+    height: 168px;
+    position: absolute;
+    top: calc(50% + 84px * sin(var(--angle)) - 84px);
+    left: calc(50% + 84px * cos(var(--angle)));
+    transform: rotate(calc(var(--angle) + 90deg));
+}
